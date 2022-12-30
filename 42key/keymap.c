@@ -9,50 +9,50 @@ enum custom_keys {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       XXXXXXX, KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                         KC_J,    KC_L,    KC_U,    KC_Y,   KC_QUOT,  XXXXXXX,
+       KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSLS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-  XXXXXXX, LALT_T(KC_A),  LGUI_T(KC_R), LSFT_T(KC_S), LCTL_T(KC_T), KC_G,      KC_M,    RCTL_T(KC_N),  RSFT_T(KC_E),  RGUI_T(KC_I), LALT_T(KC_O), XXXXXXX,
+      KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX,  KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                         KC_K,    KC_H,  KC_COMM,  KC_DOT, KC_SLSH, XXXXXXX,
+      KC_LCTRL,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                      KC_N,    KC_M,  KC_MINUS,  KC_EQUAL, KC_SLSH, KC_GRAVE,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                        XXXXXXX,   KC_TAB,  LT(MO(1), KC_SPC),          KC_BSPC,   MO(2),  XXXXXXX
+                        KC_LEFT_ALT,   KC_LGUI,  LT(MO(1), KC_SPC),    KC_BSPC,   LT(MO(2),KC_COMM) , KC_DOT
                                       //`--------------------------'  `--------------------------'
 
   ),
 
   [1] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-     XXXXXXX,  KC_ESC,  KC_SCLN, KC_COLN,  XXXXXXX, XXXXXXX,                   KC_DOWN, KC_RIGHT, XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX,
+     KC_ESC,    KC_EXLM,  KC_AT,  KC_HASH,  KC_DLR, KC_PERC,                     KC_CIRC, KC_AMPR, KC_ASTR,  KC_LPRN,  KC_RPRN, KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     XXXXXXX, KC_CIRC, XXXXXXX, XXXXXXX, POINTER, ARROWOP,                      XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX, KC_DLR, XXXXXXX, //end of line in vim and begin
+      KC_LCTRL, XXXXXXX, KC_LBRC, KC_RBRC, KC_LPRN, KC_RPRN,                      KC_LEFT, KC_DOWN,   KC_UP,KC_RIGHT, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-    XXXXXXX, XXXXXXX,   XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,                  KC_UP,  KC_LEFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    KC_LSFT, XXXXXXX,   KC_LT,  KC_GT, LSFT(KC_LBRC), LSFT(KC_RBRC),            KC_MPRV,  KC_MPLY, KC_MNXT, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          XXXXXXX, _______,  KC_SPC,     KC_ENT,   XXXXXXX, XXXXXXX
+                                          XXXXXXX, _______,  KC_SPC,     KC_ENT,   POINTER, ARROWOP
                                       //`--------------------------'  `--------------------------'
   ),
 
   [2] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       XXXXXXX, KC_1,   KC_2,  KC_3,    KC_4,     KC_5,                         KC_6,     KC_7,     KC_8,    KC_9,   KC_0,   XXXXXXX,
+       KC_ESC,    KC_1,   KC_2,  KC_3,    KC_4,     KC_5,                        KC_6,     KC_7,     KC_8,    KC_9,   KC_0,   KC_BSPC,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX,  KC_DLR, KC_PLUS, KC_LPRN, KC_RPRN, KC_AT,                        KC_PIPE, KC_MINUS, KC_EQL,  KC_UNDS, KC_ASTR,  XXXXXXX,
+      KC_F1,  KC_F2,   KC_F3,     KC_F4,  KC_F5,   KC_F6,                        KC_F7,  KC_F8,     KC_F9,  KC_F10, KC_F11,  KC_F12,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, KC_EXLM, KC_HASH, KC_LCBR, KC_RCBR, KC_GRAVE,                    KC_AMPR, KC_LBRC, KC_RBRC, KC_PERC, KC_CIRC, XXXXXXX,
+      KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      KC_UNDS, KC_PLUS, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          XXXXXXX, XXXXXXX,  KC_SPC,     KC_ENT, _______, XXXXXXX
+                                          KC_LGUI, XXXXXXX,  KC_SPC,     KC_ENT, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
   ),
 
   [3] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      XXXXXXX, KC_F1,   KC_F2,  KC_F3,  KC_F4,  KC_F5,                          KC_F6,    KC_F7,    KC_F8,  KC_F9,   KC_F10, XXXXXXX,
+        RESET, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, KC_F11, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_F12, XXXXXXX,
+      RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, RESET, XXXXXXX,
+      RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LGUI, XXXXXXX,  KC_SPC,     KC_ENT, _______, XXXXXXX
+                                          KC_LGUI, _______,  KC_SPC,     KC_ENT, _______, KC_RALT
                                       //`--------------------------'  `--------------------------'
   )
 
@@ -94,9 +94,8 @@ void oled_render_rust_logo(void) {
 }
 
 #define L_BASE 0
-#define L_LOWER 1
-#define L_RAISE 2
-#define L_BOTH 3
+#define L_LOWER 2
+#define L_RAISE 4
 
 #    define KEYLOG_LEN 6
 char     keylog_str[KEYLOG_LEN] = {};
@@ -150,9 +149,6 @@ void render_default_layer_state(void) {
             break;
         case L_RAISE:
             oled_write_P(PSTR("HIGH"), false);
-            break;
-        case L_BOTH:
-            oled_write_P(PSTR("BOTH"), false);
             break;
         default:
             oled_write_ln_P(PSTR("Undefined"), false);
@@ -241,24 +237,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             SEND_STRING("=>");
         }
         break;
-    case L_LOWER:
-      if (record->event.pressed) {
-        layer_on(L_LOWER);
-        update_tri_layer(L_LOWER, L_RAISE, L_BOTH);
-      } else {
-        layer_off(L_LOWER);
-        update_tri_layer(L_LOWER, L_RAISE, L_BOTH);
-      }
-      return false;
-    case L_RAISE:
-      if (record->event.pressed) {
-        layer_on(L_RAISE);
-        update_tri_layer(L_LOWER, L_RAISE, L_BOTH);
-      } else {
-        layer_off(L_RAISE);
-        update_tri_layer(L_LOWER, L_RAISE, L_BOTH);
-      }
-      return false; 
     }
     return true;   
 
