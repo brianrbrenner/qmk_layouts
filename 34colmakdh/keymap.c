@@ -24,7 +24,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
      XXXXXXX,  KC_ESC,  KC_SCLN, KC_COLN,  XXXXXXX, XXXXXXX,                   KC_DOWN, KC_RIGHT, XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-     XXXXXXX, KC_CIRC, XXXXXXX, XXXXXXX, POINTER, ARROWOP,                      XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX, KC_DLR, XXXXXXX, //end of line in vim and begin
+     XXXXXXX, KC_CIRC, XXXXXXX, KC_BSLS, POINTER, ARROWOP,                      KC_LEFT, KC_DOWN,  KC_RIGHT,  KC_LEFT, KC_DLR, XXXXXXX, //end of line in vim and begin
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
     XXXXXXX, XXXXXXX,   XXXXXXX,  XXXXXXX,   XXXXXXX,  XXXXXXX,                  KC_UP,  KC_LEFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
