@@ -1,0 +1,107 @@
+// Copyright (c) 2022 The ZMK Contributors
+// SPDX-License-Identifier: MIT
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+
+#define DEFAULT 0
+#define LOWER   1
+#define RAISE   2
+// Home row mods macro
+#define HRML(k1,k2,k3,k4) &ht LALT k1  &ht LGUI k2  &ht LSHFT k3  &ht LCTRL k4
+#define HRMR(k1,k2,k3,k4) &ht RCTRL k1  &ht RSHFT k2  &ht RGUI k3  &ht RALT k4
+
+/ {
+    behaviors {
+        ht: hold_tap {
+            label = "hold_tap";
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <220>;
+            quick-tap-ms = <150>;
+            global-quick-tap;
+            bindings = <&kp>, <&kp>;
+        };
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+        tri_layer {
+            if-layers = <1 2>;
+            then-layer = <3>;
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+        DEFAULT {
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│  Q       │  W       │  F       │  P       │  B       │   │  J       │  L       │  U       │  Y       │  ' "     │
+            &kp Q      &kp W      &kp F      &kp P      &kp B          &kp J      &kp L      &kp U      &kp Y      &kp SQT
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  A       │  R       │  S       │  T       │  G       │   │  M       │  N       │  E       │  I       │ O        │
+            HRML(A,        R,         S,         T)     &kp G          &kp M      HRMR(N,        E,         I,        O)
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  Z       │  X       │  C       │  D       │  V       │   │  K       │  H       │ , <      │ . >      │ / ?      │
+            &kp Z      &kp X      &kp C      &kp D      &kp V          &kp K      &kp H      &kp COMMA  &kp DOT    &kp FSLH
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                            &kp TAB   &ht 1 SPACE     &kp BSPC    &mo 2
+        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+            >;
+        };
+
+        LOWER {
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│ ESC      │  COLON   │  SEMI    │          │          │   │          │          │          │          │          │
+           &kp ESC     &kp COLON  &kp SEMI   &trans     &trans         &trans     &trans      &trans      &trans    &trans
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│ ^        │          │  \       │          │          │   │   LEFT   │   DOWN   │   UP     │ RIGHT    │  $       │
+            &kp CARET  &trans     &kp BSLH    &trans     &trans         &kp LARW   &kp DARW   &kp UARW   &kp RARW   &kp DLLR
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│          │          │          │          │          │   │          │          │          │          │          │
+            &trans       &trans     &trans     &trans     &trans         &trans     &trans     &trans     &trans     &trans
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                             &trans     &trans        &kp ENTER     &trans
+        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+            >;
+        };
+
+        RAISE {
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│ 1        │  2       │  3       │  4       │ 5        │   │  6       │  7       │  8       │  9       │  0       │
+            &kp N1      &kp N2     &kp N3     &kp N4    &kp N5         &kp N6     &kp N7      &kp N8     &kp N9     &kp N0
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│  $       │  +       │  (       │  )       │  @       │   │  |       │  -       │  =       │  _       │  *       │
+            &kp DLLR   &kp PLUS   &kp LPAR   &kp RPAR   &kp AT        &kp PIPE    &kp MINUS  &kp EQUAL  &kp UNDER  &kp STAR
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│ !        │  HASH    │   {      │  }       │ ~        │   │  &       │  [       │  ]       │  %       │  ^       │
+            &kp EXCL    &kp HASH   &kp LBRC  &kp RBRC   &kp GRAVE      &kp AMPS   &kp LBKT  &kp RBKT    &kp PRCNT   &kp CARET
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                             &trans     &trans         &trans     &trans
+        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+            >;
+        };
+
+        tri_layer {
+            bindings = <
+        //╭──────────┬──────────┬──────────┬──────────┬──────────╮   ╭──────────┬──────────┬──────────┬──────────┬──────────╮
+        //│ RESET    │          │          │          │PROFILE 0 │   │Play/pause│ PREV     │ NEXT     │          │  RESET   │
+            &reset     &trans     &trans     &trans    &bt BT_SEL 0    &kp K_PP  &kp K_PREV &kp K_NEXT  &trans      &reset
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│BOOTLOADER│          │          │          │PROFILE 1 │   │Mute      │ Vol Up   │ Vol Down │          │BOOTLOADER│
+          &bootloader  &trans     &trans     &trans    &bt BT_SEL 1   &kp K_MUTE &kp K_VOL_UP &kp K_VOL_DN  &trans &bootloader
+        //├──────────┼──────────┼──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┼──────────┼──────────┤
+        //│          │          │          │ CLEAR BT │PROFILE 2 │   │ Bright Up│ Bright Dn│          │          │          │
+            &trans     &trans     &trans    &bt BT_CLR &bt BT_SEL 2   &kp C_BRI_UP &kp C_BRI_DN &trans     &trans     &trans
+        //╰──────────┴──────────┴──────────┼──────────┼──────────┤   ├──────────┼──────────┼──────────┴──────────┴──────────╯
+                                             &trans     &trans         &trans     &trans
+        //                                 ╰──────────┴──────────╯   ╰──────────┴──────────╯
+            >;
+        };
+    };
+};
