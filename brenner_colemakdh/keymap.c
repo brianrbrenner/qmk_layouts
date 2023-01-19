@@ -1,5 +1,9 @@
 #include QMK_KEYBOARD_H
 
+/*
+*   TODO: configure tri-state layer to add media controls / or use layer 1
+*   TODO: add arrow macros
+*/
 
 #define _LAYER0 0
 #define _LAYER1 1
