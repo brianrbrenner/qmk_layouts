@@ -13,23 +13,45 @@ enum custom_keycodes {
     LAYER0 = SAFE_RANGE,
     LAYER1,
     LAYER2,
+    ARROW_OP,
+    PTR
+};
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+    case ARROW_OP:
+        if (record->event.pressed) {
+            // when keycode QMKBEST is pressed
+            SEND_STRING("=>");
+        }
+        break;
+
+    case PTR:
+        if (record->event.pressed) {
+            // when keycode QMKURL is pressed
+            SEND_STRING("->");
+        }
+        break;
+
+    }
+    return true;
 };
 
  const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
- [_LAYER0] = LAYOUT(KC_Q, KC_W, KC_F, KC_P, KC_B,      KC_J, KC_L, KC_U, KC_Y, KC_QUOT, 
+ [_LAYER0] = LAYOUT(KC_Q, KC_W, KC_F, KC_P, KC_B,      KC_J, KC_L, KC_U, KC_Y, KC_QUOT,
                     LALT_T(KC_A), LGUI_T(KC_R), LSFT_T(KC_S), LCTL_T(KC_T), KC_G,       KC_M, RCTL_T(KC_N), RSFT_T(KC_E), RGUI_T(KC_I), RALT_T(KC_O),
-                    KC_Z, KC_X, KC_C, KC_D, KC_V,      KC_K, KC_H, KC_COMM, KC_DOT, KC_SLSH, 
+                    KC_Z, KC_X, KC_C, KC_D, KC_V,      KC_K, KC_H, KC_COMM, KC_DOT, KC_SLSH,
                           KC_TAB, LT(MO(1),KC_SPC),         KC_BSPC, MO(2)),
 
-[_LAYER1] = LAYOUT(KC_ESC, KC_COLN, KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                   KC_CIRC, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_DLR, 
-                   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, 
+[_LAYER1] = LAYOUT(KC_ESC, KC_COLN, KC_SCLN, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                   KC_CIRC, KC_TRNS, KC_BSLS, ARROW_OP, PTR,     KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, KC_DLR,
+                   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
                                         KC_TRNS, KC_TRNS,               KC_ENT, KC_TRNS),
 
-[_LAYER2] = LAYOUT(KC_1, KC_2, KC_3, KC_4, KC_5,                  KC_6, KC_7, KC_8, KC_9, KC_0, 
+[_LAYER2] = LAYOUT(KC_1, KC_2, KC_3, KC_4, KC_5,                  KC_6, KC_7, KC_8, KC_9, KC_0,
                    KC_DLR, KC_PLUS, KC_LPRN, KC_RPRN, KC_AT,      KC_PIPE, KC_MINS, KC_EQL, KC_UNDS, KC_ASTR,
-                   KC_EXLM, KC_HASH, KC_LCBR, KC_RCBR, KC_GRV,    KC_AMPR, KC_LBRC, KC_RBRC, KC_PERC, KC_CIRC, 
+                   KC_EXLM, KC_HASH, KC_LCBR, KC_RCBR, KC_GRV,    KC_AMPR, KC_LBRC, KC_RBRC, KC_PERC, KC_CIRC,
                                         KC_TRNS, KC_TRNS,             KC_ENT, KC_TRNS),
 
 };
